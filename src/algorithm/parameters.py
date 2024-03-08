@@ -32,7 +32,7 @@ params = {
     'DATASET_DELIMITER': None,
 
     # Set grammar file
-    'GRAMMAR_FILE': "supervised_learning/Vladislavleva4.bnf",
+    'GRAMMAR_FILE': "strudel.bnf",
 
     # Set the number of depths permutations are calculated for
     # (starting from the minimum path of the grammar).

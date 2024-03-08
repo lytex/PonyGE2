@@ -1,0 +1,10 @@
+# slow_sequence       ::= <ws>"<"<ws><polymeter_stack>+<ws>">"<ws>
+<int>                 ::= zero|(<digit1_9> <DIGIT>*)
+<zero>                ::= "0"
+<DIGIT>               ::= [0-9]
+<digit1_9>            ::= [1-9]
+<comma>               ::= <ws>","<ws>
+<pipe>                ::= <ws>"|"<ws>
+<dot>                 ::= <ws>"."<ws>
+<quote>               ::= '"'
+<ws>                  ::= " "+ 
