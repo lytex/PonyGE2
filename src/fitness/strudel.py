@@ -36,7 +36,8 @@ class strudel(base_ff):
         print(ind.phenotype)
         print(yhat)
         print(self.y)
-        error = Hamming_error(self.y, yhat) + 0.5*len(ind.genome)
+        error = np.sum(np.abs(self.y-yhat))
+        # + 0.5*len(ind.genome)
         print(error)
         return error
 
