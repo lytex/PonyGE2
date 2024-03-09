@@ -27,12 +27,13 @@ params = {
     'FITNESS_FUNCTION': "supervised_learning.regression",
 
     # Select problem dataset
-    'DATASET_TRAIN': "Strudel/Train.txt",
+
+    'DATASET_TRAIN': "Vladislavleva4/Train.txt",
     'DATASET_TEST': None,
     'DATASET_DELIMITER': None,
 
     # Set grammar file
-    'GRAMMAR_FILE': "strudel.pybnf",
+    'GRAMMAR_FILE': "supervised_learning/Vladislavleva4.bnf",
 
     # Set the number of depths permutations are calculated for
     # (starting from the minimum path of the grammar).

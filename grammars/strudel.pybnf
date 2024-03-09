@@ -1,18 +1,9 @@
 # Adapted from https://github.com/tidalcycles/strudel/blob/main/packages/mini/krill-parser.js
-slow_sequence       ::= <ws>"<"<ws><polymeter_stack>+<ws>">"<ws>
-polymeter_stack     ::= head:sequence tail:stack_tail? { return new PatternStub(tail ? [head, ...tail.list] : [head], 'polymeter'); }
-polymeter_stack     ::= head:sequence tail:stack_tail? { return new PatternStub(tail ? [head, ...tail.list] : [head], 'polymeter'); }
-<PatternStub>       ::= def PatternStub(self, source, alignment, seed):self.type_="pattern";self.arguments_={alignment:alignment};self.source_=source;return self
-// a sequence is a combination of one or more successive slices (as an array)
-sequence            ::= s:(slice_with_ops)+ { return new PatternStub(s, 'fastcat'); }
-
-<set>                 ::= <char>|<char><set>
-<int>                 ::= zero|(<digit1_9> <DIGIT>*)
-<zero>                ::= "0"
+<slow_seq>            ::= <simple_slow_seq> | "<"<ws><slow_seq><ws><simple_slow_seq><ws>">" | "<"<ws><simple_slow_seq><ws><slow_seq><ws>">"
+<simple_slow_seq>     ::= "<"<simple_seq>">"
+<simple_seq>          ::= <DIGIT> | <DIGIT><ws><simple_seq>
+<int>                 ::= <DIGIT>
+<zero>                ::= 0
 <DIGIT>               ::= [0-9]
 <digit1_9>            ::= [1-9]
-<comma>               ::= <ws>","<ws>
-<pipe>                ::= <ws>"|"<ws>
-<dot>                 ::= <ws>"."<ws>
-<quote>               ::= '"'
-<ws>                  ::= " "+ 
+<ws>                  ::= " "
