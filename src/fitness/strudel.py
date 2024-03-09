@@ -22,7 +22,7 @@ class strudel(base_ff):
 
         data = np.genfromtxt("../datasets/" + params["DATASET_TRAIN"], delimiter="\t", skip_header=True)
         y = data[:, 1]
-        self.y = y
+        self.y = y.astype("uint8")
 
     def evaluate(self, ind, **kwargs):
         length = len(self.y)
@@ -32,10 +32,12 @@ class strudel(base_ff):
         with open("../../scratchpad.mjs", "w") as f:
             f.write(js_code)
         result = subprocess.check_output("node ../../scratchpad.mjs", shell=True, stderr=subprocess.DEVNULL)
-        yhat = [int(x) for x in result.decode('utf-8').replace('🌀 @strudel/core loaded 🌀\n', '').split('\n') if x]
-        print(yhat)
+        yhat = np.array([int(x) for x in result.decode('utf-8').replace('🌀 @strudel/core loaded 🌀\n', '').split('\n') if x])
         print(ind.phenotype)
+        print(yhat)
+        print(self.y)
         error = Hamming_error(self.y, yhat) + 0.5*len(ind.genome)
+        print(error)
         return error
 
 
