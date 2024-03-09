@@ -1,4 +1,7 @@
+# Adapted from https://github.com/tidalcycles/strudel/blob/main/packages/mini/krill-parser.js
 # slow_sequence       ::= <ws>"<"<ws><polymeter_stack>+<ws>">"<ws>
+
+<set>                 ::= <char>|<char><set>
 <int>                 ::= zero|(<digit1_9> <DIGIT>*)
 <zero>                ::= "0"
 <DIGIT>               ::= [0-9]
